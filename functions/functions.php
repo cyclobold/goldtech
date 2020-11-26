@@ -64,3 +64,21 @@ function update_user_name($user_id, $new_name){
 	}
 
 }
+
+function delete_user_account($id){
+
+	require "database/db.php";
+
+	$delete_query = "DELETE FROM users WHERE id=$id";
+	$result = mysqli_query($__conn, $delete_query);
+
+	if($result){
+		//you have deleted the user
+		header("location: logout.php");
+	}else{
+		//there is a problem..
+		echo "We could not run your query";
+	}
+
+
+}

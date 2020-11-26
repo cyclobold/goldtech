@@ -1,10 +1,6 @@
 <?php 
 ini_set("display_errors", "on");
-session_start();
-//print "<pre>";
-//print_r($_SESSION);
-
-$name = $_SESSION['name'];
+require "incs/__user_data.incs.php";
 
 ?>
 
@@ -31,5 +27,10 @@ $name = $_SESSION['name'];
 
 	</form>
 
+
+<h6><a href='#' onclick='deleteAccount(<?php echo $id; ?>)'>Delete Account</a></h6>
+
+
+<script src='js/scripts.js'></script>
 </body>
 </html>
