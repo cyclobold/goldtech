@@ -5,26 +5,36 @@ function login_user($email, $password){
 		require "database/db.php";
 
 
+		//Escape the strings in the email...
+		//This also helps in preventing data insecurity and database hacking
 		$email = mysqli_real_escape_string($__conn, trim($email));
 		$password = mysqli_real_escape_string($__conn, trim($password));
 
 
-		$query = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
+		//the select 
+		$query = "SELECT * FROM users WHERE email = '$email' AND password = '$password' LIMIT 1";
 		$result = mysqli_query($__conn, $query);
 
 		if($result){
 			//the query ran..
-			session_start();
-			//logging in 
-			$_SESSION = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			
+			//check if there was a match ..
+			if(mysqli_num_rows($result) == 1){
+				
+				session_start();
+				//logging in 
+				$_SESSION = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-			//redirect ..
-			header("location: user.php");
-		
+				//redirect the user to the user page
+				header("location: user.php");
+			}else{
+
+				echo "Sorry, invalid email/password combination. Have you registered?";
+			}
 		}else{
+
 			//the query did not run 
 			echo "We could not get the user info: ".mysqli_error($__conn);
-
 		}
 
 
