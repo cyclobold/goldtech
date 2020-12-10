@@ -92,7 +92,14 @@ if(isset($_POST['upload'])){
 
 	if(in_array($type, $allowed_types)){
 		//this is correct
-		$storage = "hello/".$_FILES['photo']['name'];
+		//create a directory for the user if the directory does not exist..
+		$user_id = $_SESSION['id'];
+		
+		if(!is_dir("hello/{$user_id}")){
+			mkdir("hello/{$user_id}");
+		}
+
+		$storage = "hello/{$user_id}/".$_FILES['photo']['name'];
 
 		if(move_uploaded_file($_FILES['photo']['tmp_name'], $storage)){
 			//save the final name to the database..
