@@ -1,4 +1,5 @@
 <?php 
+ini_set("display_errors", 'on');
 require "functions/functions.php";
 //Process Login ..
 if(isset($_POST['login'])){
@@ -76,9 +77,33 @@ if(isset($_POST['update_name'])){
 
 	}
 
+}
+
+//Upload
+if(isset($_POST['upload'])){
+	//echo "<pre>";
+	//print_r($_FILES);
+	//
+	//check what is uploaded..
+	$allowed_types = array("image/png", "image/jpeg", "image/jpg");
+
+	//check the type uploaded..
+	$type = $_FILES['photo']['type'];
+
+	if(in_array($type, $allowed_types)){
+		//this is correct
+		$storage = "hello/".$_FILES['photo']['name'];
+
+		if(move_uploaded_file($_FILES['photo']['tmp_name'], $storage)){
+			//save the final name to the database..
+			save_profile_photo($storage);
+		}
+	}else{
+		//invalid type..
+		echo "Invalid type. Please upload only png, jpg and jpeg";
+	}
 
 
-
-
-
+	
+	
 }

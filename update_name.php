@@ -13,6 +13,8 @@ require "incs/__user_data.incs.php";
 <body>
 
 	<h4>Welcome <a href='logout.php'>Logout</a></h4>
+	<span><small><button onclick="location.href='upload.php'">Upload Photo</button></small></span>
+	<hr>
 
 		<?php require "forms/process_forms.php"; ?>
 		<form action='' method="POST">

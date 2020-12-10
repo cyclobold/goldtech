@@ -42,6 +42,22 @@ function login_user($email, $password){
 
 }
 
+function save_profile_photo($storage){
+	require "database/db.php";
+
+	$user_id = $_SESSION['id'];
+
+	$query = "UPDATE users SET profile_photo_path = '$storage' WHERE id=$user_id LIMIT 1";
+
+	$result = mysqli_query($__conn, $query);
+	if($result){
+		$_SESSION['profile_photo_path'] = $storage;
+		echo "Uploaded successfully!";
+	}else{
+		echo "There was an error: ".mysqli_error($__conn);
+	}
+}
+
 
 function update_user_name($user_id, $new_name){
 

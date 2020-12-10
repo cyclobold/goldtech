@@ -1,5 +1,5 @@
 <?php 
-session_start();
+ini_set("display_errors", "on");
 require "incs/__user_data.incs.php";
 ?>
 <!DOCTYPE html>
@@ -11,18 +11,20 @@ require "incs/__user_data.incs.php";
 
 	<?php 
 
+		//check if image is uploaded ..
+		if($_SESSION['profile_photo_path'] == NULL){
+			$profile_photo = "default_photos/user.jpeg";
+		}else{
+			$profile_photo = $_SESSION['profile_photo_path'];
+		}
+
 		echo "Welcome ". $name;
 
 		echo "<h4><a href='update_name.php'>Update Name</a></h4>";
 
 
+		echo "<img src='{$profile_photo}' style='width: 25%;'>";
 
-		echo "<script>
-
-				alert('Welcome ' + '$name');
-
-
-			</script>";
 
 	?>
 
