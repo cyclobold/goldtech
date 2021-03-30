@@ -84,9 +84,12 @@ if(isset($_POST['upload'])){
 	//echo "<pre>";
 	//print_r($_FILES);
 	//
-	//check what is uploaded..
+	//check what is uploaded.. mimetypes
 	$allowed_types = array("image/png", "image/jpeg", "image/jpg");
 
+	echo "<pre>";
+	print_r($_FILES['photo']);
+die();
 	//check the type uploaded..
 	$type = $_FILES['photo']['type'];
 
@@ -99,6 +102,7 @@ if(isset($_POST['upload'])){
 			mkdir("hello/{$user_id}");
 		}
 
+		//delete what is inside the storage before adding new one
 		$storage = "hello/{$user_id}/".$_FILES['photo']['name'];
 
 		if(move_uploaded_file($_FILES['photo']['tmp_name'], $storage)){

@@ -1,5 +1,11 @@
 <?php 
 ini_set("display_errors", 'on');
+//require "incs/__user_data.incs.php";
+session_start();
+if(isset($_SESSION['email'])){
+	header("location: user.php");
+}
+
 
 ?>
 

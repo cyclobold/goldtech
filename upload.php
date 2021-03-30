@@ -13,7 +13,7 @@ if(isset($_SESSION['email'])){
 </head>
 <body>
 
-	<strong><a href='logout.php'>Log out</strong>
+	<strong><a href='logout.php'>Log out</a></strong>
 
 	<div>
 		<?php require "forms/process_forms.php"; ?>

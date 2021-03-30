@@ -9,6 +9,8 @@ require "incs/__user_data.incs.php";
 </head>
 <body>
 
+
+
 	<?php 
 
 		//check if image is uploaded ..
@@ -20,7 +22,7 @@ require "incs/__user_data.incs.php";
 
 		echo "Welcome ". $name;
 
-		echo "<h4><a href='update_name.php'>Update Name</a></h4>";
+		echo "<h4><a href='update_name.php'>Update Name</a> | <a href='update_profile.php'>Update Profile</a></h4>";
 
 
 		echo "<img src='{$profile_photo}' style='width: 25%;'>";

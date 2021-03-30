@@ -25,6 +25,11 @@ function login_user($email, $password){
 				//logging in 
 				$_SESSION = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
+				//echo "<pre>";
+				//print_r($_SESSION);
+
+				//die();
+
 				//redirect the user to the user page
 				header("location: user.php");
 			}else{
